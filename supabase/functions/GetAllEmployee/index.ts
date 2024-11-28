@@ -9,8 +9,8 @@ Deno.serve(async (req) => {
 
     if(!data){
       return new Response(
-        JSON.stringify("No data Found in employee table"),
-        { status: 200,headers: { "Content-Type": "application/json" } },
+        JSON.stringify({status:404,message: "No data found in employee table",time:new Date()}),
+        { status: 404,headers: { "Content-Type": "application/json" } },
       )
 
     }

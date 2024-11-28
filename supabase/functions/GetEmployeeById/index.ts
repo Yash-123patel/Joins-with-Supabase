@@ -9,14 +9,14 @@ Deno.serve(async (req) => {
       const id=path[path.length-1];
       if(!id||isNaN(parseInt(id))){  
       return new Response(
-        JSON.stringify("Invalid Employee id"),
+        JSON.stringify({status:400,message: "Invalid Employee Id",time:new Date()}),
         { status: 400,headers: { "Content-Type": "application/json" } },
       )
       }
       const data=await getEmployeeById(parseInt(id));
-      if(data==null){
+      if(data.length==0){
         return new Response(
-          JSON.stringify("No data Found"),
+          JSON.stringify({status:404,message: "No data Found",time:new Date()}),
           { status: 404,headers: { "Content-Type": "application/json" } },
         )
 

@@ -11,7 +11,7 @@ export default async function getEmployeeById(emp_id:number) {
         return error
      }
      if(!data)
-        return null;
+        return [];
  
      return data;
 }
