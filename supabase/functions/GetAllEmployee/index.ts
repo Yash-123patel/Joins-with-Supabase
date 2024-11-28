@@ -1,16 +1,16 @@
-import getCourseWithTeacherAnyPayment from "./_repository/JoinMoreThanTwoTables.ts"
+import { getAllEmployeefromRepo } from "../_repository/GetAllEmployee.ts";
 
 Deno.serve(async (req) => {
  try {
   
   if(req.method==="GET"){
 
-    const data=await getCourseWithTeacherAnyPayment();
+    const data=await getAllEmployeefromRepo();
 
     if(!data){
       return new Response(
-        JSON.stringify("No data Found"),
-        { status: 400,headers: { "Content-Type": "application/json" } },
+        JSON.stringify("No data Found in employee table"),
+        { status: 200,headers: { "Content-Type": "application/json" } },
       )
 
     }
@@ -26,7 +26,7 @@ Deno.serve(async (req) => {
   )
  } catch (error) {
   return new Response(
-    JSON.stringify("Internal server error"),
+    JSON.stringify(`Internal server error ${error}`),
     { status: 500,headers: { "Content-Type": "application/json" } },
   )
   
